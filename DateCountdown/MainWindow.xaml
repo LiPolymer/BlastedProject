@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:WpfPSM"
         mc:Ignorable="d"
         x:Name="mainWindow"
-        Title="DateCounterForSCXZ-2022-17" Height="202" Width="229" ShowInTaskbar="False" WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded" AllowsTransparency="True" Background="#003D3D3D" >
+        Title="DateCountdown" Height="202" Width="229" ShowInTaskbar="False" WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded" AllowsTransparency="True" Background="#003D3D3D" >
     <Grid>
         <materialDesign:Card x:Name="mainCard"
             Padding="0"

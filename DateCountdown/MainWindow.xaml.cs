@@ -27,7 +27,7 @@ namespace WpfPSM
         }
 
         /// <summary>
-        /// 
+        /// 日期点击
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -43,17 +43,28 @@ namespace WpfPSM
             }
         }
 
+        /// <summary>
+        /// 时间差异计算
+        /// </summary>
+        /// <param name="startTime"></param>
+        /// <param name="endTime"></param>
+        /// <returns></returns>
         public int DiffDays(DateTime startTime, DateTime endTime)
         {
             TimeSpan daysSpan = new TimeSpan(endTime.Ticks - startTime.Ticks);
             return daysSpan.Days;
         }
 
+        /// <summary>
+        /// 窗口加载动作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             if (!File.Exists(".\\datecfg.txt"))
             {
-                MessageBox.Show("配置文件丢失,无法启动力!", "悲 | DateBackCounter17", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("配置文件丢失,无法启动力!", "悲 | BlastedDateCountdown", MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(0);
             }
             else
@@ -64,6 +75,9 @@ namespace WpfPSM
             }
         }
 
+        /// <summary>
+        /// 控件内容初始化
+        /// </summary>
         private void init()
         {
             try
@@ -81,16 +95,26 @@ namespace WpfPSM
             }
             catch (Exception ex)
             {
-                MessageBox.Show("配置文件炸力!\r\n错误信息\r\n" + ex,"悲 | DateBackCounter17", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("配置文件炸力!\r\n错误信息\r\n" + ex, "悲 | BlastedDateCountdown", MessageBoxButton.OK, MessageBoxImage.Warning);
                 Environment.Exit(0);
             }
         }
 
+        /// <summary>
+        /// 关闭按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void closeBtn_Click(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
         }
 
+        /// <summary>
+        /// 重载按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void reloadBtn_Click(object sender, RoutedEventArgs e)
         {
             File.WriteAllText(".\\datecfg.txt", cfgBox.Text);

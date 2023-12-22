@@ -1,0 +1,88 @@
+﻿<Window x:Class="CharRoller.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:CharRoller"
+        mc:Ignorable="d"
+        WindowStyle="SingleBorderWindow"
+        x:Name="mainWindow"
+        ResizeMode="NoResize"
+        Title="CharRoller" Height="297" Width="487">
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome 
+                        CornerRadius="0" 
+                        CaptionHeight="30"
+                        GlassFrameThickness="-1"
+                        UseAeroCaptionButtons="True"
+                        NonClientFrameEdges="None"  />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Style>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                        <RotateTransform Angle="-491.634" CenterX="0.5" CenterY="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FF75BCE2"/>
+                <GradientStop Color="#FFBDFDFF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                Background="#FF43AEE6"
+                HorizontalAlignment="Right" 
+                Margin="0,5,5,0" 
+                VerticalAlignment="Top" 
+                Width="40" Height="40" 
+                WindowChrome.IsHitTestVisibleInChrome="True" 
+                ToolTip="关闭"
+                materialDesign:ElevationAssist.Elevation="Dp2"
+                Click="CloseButton_Click" BorderBrush="{x:Null}">
+            <materialDesign:PackIcon Kind="Power" Foreground="#DDFFFFFF" />
+        </Button>
+        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                Background="#FF6FBAFF" 
+                HorizontalAlignment="Right" 
+                Margin="0,5,50,0" 
+                VerticalAlignment="Top" 
+                Width="30" Height="30" 
+                WindowChrome.IsHitTestVisibleInChrome="True"
+                ToolTip="最大化"
+                materialDesign:ElevationAssist.Elevation="Dp2"
+                Click="FullButton_Click" BorderBrush="{x:Null}">
+            <materialDesign:PackIcon Kind="Maximize" Foreground="#DDFFFFFF" />
+        </Button>
+        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                Background="#FF13E4FF"
+                HorizontalAlignment="Right"
+                Margin="0,5,85,0" 
+                VerticalAlignment="Top"
+                Width="30" Height="30"
+                ToolTip="最小化"
+                materialDesign:ElevationAssist.Elevation="Dp2"
+                WindowChrome.IsHitTestVisibleInChrome="True" 
+                Click="MinButton_Click" BorderBrush="{x:Null}">
+            <materialDesign:PackIcon Kind="Minimize" Foreground="#DDFFFFFF" />
+        </Button>
+        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                Background="#FF1357FF"
+                Margin="22,0,0,22"
+                ToolTip="刷新"
+                materialDesign:ElevationAssist.Elevation="Dp2"
+                WindowChrome.IsHitTestVisibleInChrome="True" 
+                Click="MinButton_Click" BorderBrush="{x:Null}" Height="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100">
+            <materialDesign:PackIcon Kind="Refresh" Foreground="#DDFFFFFF" />
+        </Button>
+    </Grid>
+</Window>
