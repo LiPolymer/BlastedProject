@@ -41,7 +41,6 @@
         </Grid.Background>
         <Grid x:Name="windowCtrlGrid">
             <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                Background="#FF43AEE6"
                 HorizontalAlignment="Right" 
                 Margin="0,5,5,0" 
                 VerticalAlignment="Top" 
@@ -50,10 +49,23 @@
                 ToolTip="关闭"
                 materialDesign:ElevationAssist.Elevation="Dp2"
                 Click="CloseButton_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                <RotateTransform Angle="-121.608" CenterX="0.5" CenterY="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#FF6CEEFF"/>
+                        <GradientStop Color="#FFFF6868" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
                 <materialDesign:PackIcon Kind="Power" Foreground="#DDFFFFFF" />
             </Button>
-            <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                Background="#FF6FBAFF" 
+            <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" 
                 HorizontalAlignment="Right" 
                 Margin="0,5,50,0" 
                 VerticalAlignment="Top" 
@@ -62,10 +74,23 @@
                 ToolTip="最大化"
                 materialDesign:ElevationAssist.Elevation="Dp2"
                 Click="FullButton_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                <RotateTransform Angle="208.301" CenterX="0.5" CenterY="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#FF79D8D2"/>
+                        <GradientStop Color="#FF7D9AB5" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
                 <materialDesign:PackIcon Kind="Maximize" Foreground="#DDFFFFFF" />
             </Button>
             <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                Background="#FF13E4FF"
                 HorizontalAlignment="Right"
                 Margin="0,5,85,0" 
                 VerticalAlignment="Top"
@@ -74,16 +99,43 @@
                 materialDesign:ElevationAssist.Elevation="Dp2"
                 WindowChrome.IsHitTestVisibleInChrome="True" 
                 Click="MinButton_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                <RotateTransform Angle="-344.932" CenterX="0.5" CenterY="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#FF36D2EF"/>
+                        <GradientStop Color="#FF21E2D5" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
                 <materialDesign:PackIcon Kind="Minimize" Foreground="#DDFFFFFF" />
             </Button>
         </Grid>
         <Button x:Name="refreshBtn" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                Background="#FF1357FF"
                 Margin="22,0,0,22"
                 ToolTip="抽取"
                 materialDesign:ElevationAssist.Elevation="Dp2"
                 WindowChrome.IsHitTestVisibleInChrome="True" 
                 Click="refreshBtn_Click" BorderBrush="{x:Null}" Height="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="100">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform Angle="203.356" CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF464B98"/>
+                    <GradientStop Color="#FF648DF1" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
             <materialDesign:PackIcon Kind="Refresh" Foreground="#DDFFFFFF" />
         </Button>
         <Label x:Name="nameBox" Content="[:D]" Margin="50,50,50,50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" FontStretch="Condensed" Background="{x:Null}">
@@ -102,12 +154,37 @@
                 </LinearGradientBrush>
             </Label.Foreground>
         </Label>
+        <Button x:Name="ResetButton" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                HorizontalAlignment="Left"
+                Visibility="Collapsed"
+                Margin="95,0,0,22"
+                Width="40"
+                ToolTip="清除历史记录"
+                materialDesign:ElevationAssist.Elevation="Dp2"
+                WindowChrome.IsHitTestVisibleInChrome="True" 
+                Click="ClearButton_Click" BorderBrush="{x:Null}" Height="40" VerticalAlignment="Bottom">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform Angle="-60.255" CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FFE63434"/>
+                    <GradientStop Color="#FFD0AC2D" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <materialDesign:PackIcon Kind="Delete" Foreground="#DDFFFFFF" />
+        </Button>
         <materialDesign:Card x:Name="cfgCard"
             Padding="8"
-            Visibility="Visible"
+            Visibility="Collapsed"
             Opacity="0.9"
             Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-            UniformCornerRadius="6" Margin="0,0,20,20" HorizontalAlignment="Right" Width="448" Height="210" VerticalAlignment="Bottom">
+            UniformCornerRadius="6" Margin="0,0,20,20" HorizontalAlignment="Right" Width="366" Height="210" VerticalAlignment="Bottom">
             <materialDesign:Card.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <LinearGradientBrush.RelativeTransform>
@@ -123,11 +200,25 @@
                 </LinearGradientBrush>
             </materialDesign:Card.Background>
             <Grid>
-                <CheckBox x:Name="noRepeatCheck" Content="不重复" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <CheckBox x:Name="noRepeatCheck" Content="不重复" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="">
+                    <CheckBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                    <RotateTransform Angle="-244.983" CenterX="0.5" CenterY="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FF1BE239"/>
+                            <GradientStop Color="#FF00FDBD" Offset="1"/>
+                        </LinearGradientBrush>
+                    </CheckBox.Background>
+                </CheckBox>
 
-                <TextBox x:Name="HistoryBox" Margin="302,33,0,10" TextWrapping="Wrap" Text="" AcceptsReturn="True" IsReadOnly="True" ScrollViewer.CanContentScroll="True" HorizontalAlignment="Left" Width="104"/>
+                <TextBox x:Name="HistoryBox" Margin="0,33,10,10" TextWrapping="Wrap" Text="" AcceptsReturn="True" IsReadOnly="True" ScrollViewer.CanContentScroll="True" HorizontalAlignment="Right" Width="104"/>
                 <Button x:Name="ClearButton" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                    Background="#FFFF5CB6"
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Bottom"
                     Width="20" Height="20"
@@ -135,13 +226,26 @@
                     materialDesign:ElevationAssist.Elevation="Dp2"
                     WindowChrome.IsHitTestVisibleInChrome="True" 
                     Click="ClearButton_Click" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                    <RotateTransform Angle="120.256" CenterX="0.5" CenterY="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FFFF603C"/>
+                            <GradientStop Color="#FFF98181" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
                     <materialDesign:PackIcon Kind="Bin" Foreground="#DDFFFFFF" />
                 </Button>
                 <Label Content="历史记录" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="104" HorizontalContentAlignment="Right" Foreground="#DDFFFFFF"/>
             </Grid>
         </materialDesign:Card>
         <Button x:Name="MoreButton" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                Background="#FF13E4FF"
                 HorizontalAlignment="Right"
                 Margin="0,0,9,13" 
                 VerticalAlignment="Bottom"
@@ -150,6 +254,20 @@
                 materialDesign:ElevationAssist.Elevation="Dp2"
                 WindowChrome.IsHitTestVisibleInChrome="True" 
                 Click="MoreButton_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform Angle="-41.634" CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF73E4CD"/>
+                    <GradientStop Color="#FF44BDD4" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
             <materialDesign:PackIcon Kind="MoreCircle" Foreground="#DDFFFFFF" />
         </Button>
     </Grid>

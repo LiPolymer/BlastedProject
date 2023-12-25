@@ -25,6 +25,8 @@ namespace CharRoller
         {
             InitializeComponent();
             cfgCard.Visibility = Visibility.Collapsed;
+            ResetButton.Visibility = Visibility.Collapsed;
+            ClearButton.Visibility = Visibility.Collapsed;
             Initialize();
         }
         //----------------Variables---------------
@@ -59,36 +61,33 @@ namespace CharRoller
             return ran.Next(from, to);
         }
 
-        private string[] CompareA(string[] a, string[] b)
+        private string[] ExProcessor(string[] a, string[] b)
         {
-            string[] buffer = new string[] {};
-            foreach (string s in a)
-            {
-                foreach (string s2 in b)
-                {
-                    if (s == s2)
-                    {
-                        break;
-                    }
-                }
-            }
-            return buffer;
+            return a.Except(b).ToArray();
         }
 
         private void RePickAction()
         {
-            nameBox.Content = nList[Randomizer(0, nList.Length)];
-            HistoryBox.Text = HistoryBox.Text + nameBox.Content + "\n";
             #pragma warning disable CS8629 // 可为 null 的值类型可为 null。
-            try
+            if ((bool)noRepeatCheck.IsChecked)
             {
-                if ((bool)noRepeatCheck.IsChecked)
-                {
-                    nList = (string[])File.ReadAllLines("list.txt").Except(HistoryBox.Text.Split('\n'));
-                }
+                nList = ExProcessor(nList, HistoryBox.Text.Split('\n'));
             }
-            catch { }
+            else
+            {
+                nList = File.ReadAllLines("list.txt");
+            }
             #pragma warning restore CS8629
+            if (nList.Length > 0 )
+            {
+                nameBox.Content = nList[Randomizer(0, nList.Length)];
+                HistoryBox.Text = HistoryBox.Text + nameBox.Content + "\n";
+            }
+            else
+            {
+                ResetButton.Visibility = Visibility.Visible;
+                nameBox.Content = "请重置记录";
+            }
         }
         //--------------ViewProcessor------------
 
@@ -136,11 +135,14 @@ namespace CharRoller
         private void refreshBtn_Click(object sender, RoutedEventArgs e)
         {
             RePickAction();
+            ClearButton.Visibility = Visibility.Visible;
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             HistoryBox.Clear();
+            ResetButton.Visibility = Visibility.Collapsed;
+            ClearButton.Visibility = Visibility.Collapsed;
         }
     }
 }
