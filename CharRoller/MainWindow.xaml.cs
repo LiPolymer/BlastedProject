@@ -86,6 +86,7 @@ namespace CharRoller
             else
             {
                 ResetButton.Visibility = Visibility.Visible;
+                refreshBtn.IsEnabled = false;
                 nameBox.Content = "请重置记录";
             }
         }
@@ -141,7 +142,10 @@ namespace CharRoller
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             HistoryBox.Clear();
+            nList = File.ReadAllLines("list.txt");
+            nameBox.Content = ":D";
             ResetButton.Visibility = Visibility.Collapsed;
+            refreshBtn.IsEnabled = true;
             ClearButton.Visibility = Visibility.Collapsed;
         }
     }

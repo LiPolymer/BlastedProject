@@ -62,10 +62,17 @@ namespace WpfPSM
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Loader();
+        }
+
+        private void Loader()
+        {
             if (!File.Exists(".\\datecfg.txt"))
             {
-                MessageBox.Show("配置文件丢失,无法启动力!", "悲 | BlastedDateCountdown", MessageBoxButton.OK, MessageBoxImage.Error);
-                Environment.Exit(0);
+                //MessageBox.Show("配置文件丢失,无法启动力!", "悲 | BlastedDateCountdown", MessageBoxButton.OK, MessageBoxImage.Error);
+                //Environment.Exit(0);
+                File.WriteAllText(".\\datecfg.txt", "2024/1/1,New Year!,10,10,0.9");
+                Loader();
             }
             else
             {

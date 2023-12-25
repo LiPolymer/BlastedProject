@@ -184,7 +184,7 @@
             Visibility="Collapsed"
             Opacity="0.9"
             Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-            UniformCornerRadius="6" Margin="0,0,20,20" HorizontalAlignment="Right" Width="366" Height="210" VerticalAlignment="Bottom">
+            UniformCornerRadius="6" Margin="0,0,20,20" HorizontalAlignment="Right" Width="223" Height="210" VerticalAlignment="Bottom">
             <materialDesign:Card.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <LinearGradientBrush.RelativeTransform>
@@ -200,7 +200,7 @@
                 </LinearGradientBrush>
             </materialDesign:Card.Background>
             <Grid>
-                <CheckBox x:Name="noRepeatCheck" Content="不重复" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="">
+                <CheckBox x:Name="noRepeatCheck" Content="不重复" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="" Margin="10,10,0,0">
                     <CheckBox.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <LinearGradientBrush.RelativeTransform>
