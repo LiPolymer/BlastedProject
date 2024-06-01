@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,6 +56,12 @@ namespace WpfPSM
             return daysSpan.Days;
         }
 
+        public TimeSpan DiffAccu(DateTime startTime, DateTime endTime)
+        {
+            TimeSpan daysSpan = new TimeSpan(endTime.Ticks - startTime.Ticks);
+            return daysSpan;
+        }
+
         /// <summary>
         /// 窗口加载动作
         /// </summary>
@@ -65,20 +72,76 @@ namespace WpfPSM
             Loader();
         }
 
+        string[] cfg;
         private void Loader()
         {
             if (!File.Exists(".\\datecfg.txt"))
             {
                 //MessageBox.Show("配置文件丢失,无法启动力!", "悲 | BlastedDateCountdown", MessageBoxButton.OK, MessageBoxImage.Error);
                 //Environment.Exit(0);
-                File.WriteAllText(".\\datecfg.txt", "2024/1/1,New Year!,10,10,0.9");
+                File.WriteAllText(".\\datecfg.txt", "d,2025/1/1,New Year!,10,10,0.9");
                 Loader();
             }
             else
             {
                 cfgBox.Text = File.ReadAllText(".\\datecfg.txt");
                 cfgCard.Visibility = Visibility.Collapsed;
-                init();
+                cfg = cfgBox.Text.Split(',');
+                if (cfg[0] == "d")
+                {
+                    init();
+                }
+                else
+                {
+                    Thread refreshT = new Thread(cycle);
+                    refreshT.Start();
+                }
+            }
+        }
+
+        private void cycle()
+        {
+            while (true)
+            {
+                mainWindow.Dispatcher.Invoke(() => { cycletick(); });
+                Thread.Sleep(100);
+            }
+        }
+
+        private void cycletick()
+        {
+            string timeStr = cfg[1];
+            string timeName = cfg[2];
+            mainWindow.Top = Convert.ToInt32(cfg[3]);
+            mainWindow.Left = Convert.ToInt32(cfg[4]);
+            mainCard.Opacity = Convert.ToDouble(cfg[5]);
+            DateTime targetTime = Convert.ToDateTime(timeStr);
+            TimeSpan diff = DiffAccu(DateTime.Now.ToLocalTime(), targetTime);
+            smallBox.Text = timeName;
+            if (cfg[0] == "dh")
+            {
+                mainWindow.Width = 250;
+                mainCard.Width = 200;
+                bigBox.Text = "还有" + Convert.ToString(diff.Days) + "天" + Convert.ToString(diff.Hours) + "时";
+            }
+
+            else if (cfg[0] == "dhm")
+            {
+                mainWindow.Width = 260;
+                mainCard.Width = 250;
+                bigBox.Text = "还有" + Convert.ToString(diff.Days) + "天"
+                    + Convert.ToString(diff.Hours) + "时" 
+                    + Convert.ToString(diff.Minutes) + "分";
+            }
+
+            else if (cfg[0] == "dhms")
+            {
+                mainWindow.Width = 300;
+                mainCard.Width = 290;
+                bigBox.Text = "还有" + Convert.ToString(diff.Days) + "天"
+                    + Convert.ToString(diff.Hours) + "时"
+                    + Convert.ToString(diff.Minutes) + "分"
+                    + Convert.ToString(diff.Seconds) + "秒";
             }
         }
 
@@ -91,11 +154,11 @@ namespace WpfPSM
             {
                 string cfgstr = File.ReadAllText(".\\datecfg.txt");
                 string[] cfg = cfgstr.Split(',');
-                string timeStr = cfg[0];
-                string timeName = cfg[1];
-                mainWindow.Top = Convert.ToInt32(cfg[2]);
-                mainWindow.Left = Convert.ToInt32(cfg[3]);
-                mainCard.Opacity = Convert.ToDouble(cfg[4]);
+                string timeStr = cfg[1];
+                string timeName = cfg[2];
+                mainWindow.Top = Convert.ToInt32(cfg[3]);
+                mainWindow.Left = Convert.ToInt32(cfg[4]);
+                mainCard.Opacity = Convert.ToDouble(cfg[5]);
                 DateTime targetTime = Convert.ToDateTime(timeStr);
                 bigBox.Text ="还有" + Convert.ToString(DiffDays(DateTime.Now.ToLocalTime(), targetTime)) + "天";
                 smallBox.Text = timeName;
@@ -125,7 +188,7 @@ namespace WpfPSM
         private void reloadBtn_Click(object sender, RoutedEventArgs e)
         {
             File.WriteAllText(".\\datecfg.txt", cfgBox.Text);
-            init();
+            Loader();
         }
     }
 }

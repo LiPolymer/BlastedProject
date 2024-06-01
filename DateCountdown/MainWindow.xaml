@@ -46,7 +46,7 @@
                 Padding="8"
                 Background="{DynamicResource PrimaryHueDarkBrush}"
                 Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                UniformCornerRadius="6" Margin="0,135,0,0" HorizontalAlignment="Center" Width="209" Height="57" VerticalAlignment="Top">
+                UniformCornerRadius="6" Margin="10,135,0,0" HorizontalAlignment="Left" Width="209" Height="57" VerticalAlignment="Top">
             <Grid>
                 <Button x:Name="closeBtn"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
